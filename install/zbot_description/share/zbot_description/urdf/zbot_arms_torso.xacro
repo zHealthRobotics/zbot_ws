@@ -1,0 +1,1340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot
+  name="zbot">
+  
+  <link name="torso_footprint"/>
+  
+  <link
+    name="torso_link">
+    <inertial>
+      <origin
+        xyz="0.018596 -3.9839E-08 -0.30971"
+        rpy="0 0 0" />
+      <mass
+        value="8.7003" />
+      <inertia
+        ixx="0.33953"
+        ixy="1.241E-07"
+        ixz="3.4609E-05"
+        iyy="0.32865"
+        iyz="6.853E-09"
+        izz="0.025969" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/torso_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/torso_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="footprint_to_torso" type="fixed">
+    <parent link="torso_footprint" />
+    <child link="torso_link" />
+    <origin rpy="0 0 0" xyz="0 0 1.085" />
+  </joint>  
+  
+  <link
+    name="T2RS_link">
+    <inertial>
+      <origin
+        xyz="-1.1391E-05 -0.02751 0.026802"
+        rpy="0 0 0" />
+      <mass
+        value="0.49232" />
+      <inertia
+        ixx="0.00053947"
+        ixy="-1.1182E-07"
+        ixz="-6.3739E-08"
+        iyy="0.00105"
+        iyz="7.5262E-05"
+        izz="0.00087713" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/T2RS_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89412 0.89412 0.89412 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -0.046 0.06" rpy="1.44 0 0"/>
+      <geometry>
+        <cylinder radius="0.053" length="0.06"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="T2RS_joint"
+    type="fixed">
+    <origin
+      xyz="0 -0.062 -0.046174"
+      rpy="0 0 0" />
+    <parent
+      link="torso_link" />
+    <child
+      link="T2RS_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="RSP_link">
+    <inertial>
+      <origin
+        xyz="-0.0015388 -0.053054 -3.8328E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.17559" />
+      <inertia
+        ixx="0.00019619"
+        ixy="8.3208E-08"
+        ixz="-1.6412E-08"
+        iyy="0.00012479"
+        iyz="-7.8681E-08"
+        izz="0.00010732" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/RSP_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.86667 0.9098 1 1" />
+      </material>
+    </visual>
+    <!-- Main cylindrical body -->
+    <collision>
+      <origin xyz="0 -0.068 0" rpy="0 1.57 0"/>
+      <geometry>
+        <cylinder radius="0.053" length="0.05"/>
+      </geometry>
+    </collision>
+
+    <!-- Side mounting bracket -->
+    <collision>
+      <origin xyz="0 -0.0125 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.05 0.02 0.05"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RSP_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.078272 0.065888"
+      rpy="-0.13963 0 0" />
+    <parent
+      link="T2RS_link" />
+    <child
+      link="RSP_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="35"
+      velocity="10.47" />
+    <dynamics
+      damping="0.05"
+      friction="0.05" />
+  </joint>
+  <link
+    name="RSY_link">
+    <inertial>
+      <origin
+        xyz="-0.00694 -8.3267E-17 -0.037821"
+        rpy="0 0 0" />
+      <mass
+        value="0.053339" />
+      <inertia
+        ixx="2.5402E-05"
+        ixy="8.1403E-22"
+        ixz="-8.1208E-07"
+        iyy="2.2164E-05"
+        iyz="-7.2518E-21"
+        izz="1.1182E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/RSY_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.86667 0.9098 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <!-- Vertical plate -->
+      <origin xyz="0 0 -0.03" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.05 0.09"/>
+      </geometry>
+    </collision>
+
+    <collision>
+      <!-- Bottom horizontal plate -->
+      <origin xyz="-0.02 0 -0.065" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.05 0.05 0.01"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RSY_joint"
+    type="revolute">
+    <origin
+      xyz="0.031 -0.06875 0"
+      rpy="0.13963 0 0" />
+    <parent
+      link="RSP_link" />
+    <child
+      link="RSY_link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="35"
+      velocity="10.47" />
+    <dynamics
+      damping="0.05"
+      friction="0.05" />
+  </joint>
+  <link
+    name="RSR_link">
+    <inertial>
+      <origin
+        xyz="5.8391E-05 0.0011415 -0.11682"
+        rpy="0 0 0" />
+      <mass
+        value="0.35852" />
+      <inertia
+        ixx="0.00067036"
+        ixy="6.1426E-08"
+        ixz="-5.8526E-09"
+        iyy="0.00058704"
+        iyz="3.8462E-06"
+        izz="0.00035439" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/RSR_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89412 0.89412 0.89412 1" />
+      </material>
+    </visual>
+    <collision name="RSR_link_middlepart">
+      <origin
+        xyz="0 0 -0.09"
+        rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.055" length="0.18"/>
+      </geometry>
+    </collision>
+    <collision name="RSR_link_elbowmotor">
+      <origin
+        xyz="0 0 -0.23"
+        rpy="1.57 0 0" />
+      <geometry>
+        <cylinder radius="0.05" length="0.06"/>
+      </geometry>
+    </collision>   
+  </link>
+  <joint
+    name="RSR_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0275 0 -0.07875"
+      rpy="0 0 0" />
+    <parent
+      link="RSY_link" />
+    <child
+      link="RSR_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="25"
+      velocity="10.47" />
+    <dynamics
+      damping="0.05"
+      friction="0.05" />
+  </joint>
+  <link
+    name="REP_link">
+    <inertial>
+      <origin
+        xyz="-2.5968E-07 -0.019327 -0.081159"
+        rpy="0 0 0" />
+      <mass
+        value="0.16062" />
+      <inertia
+        ixx="6.3488E-05"
+        ixy="-5.7068E-09"
+        ixz="8.1084E-10"
+        iyy="6.5851E-05"
+        iyz="-3.6027E-07"
+        izz="5.6992E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/REP_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision name="REP_link_main">
+      <origin xyz="0 -0.025 -0.093" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.03" length="0.05"/>
+      </geometry>
+    </collision>
+
+    <collision name="REP_link_mount">
+      <origin xyz="0 0 -0.03" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.05 0.005 0.08"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="REP_joint"
+    type="revolute">
+    <origin
+      xyz="1.4698E-05 0.028015 -0.22617"
+      rpy="0 0 0" />
+    <parent
+      link="RSR_link" />
+    <child
+      link="REP_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="25"
+      velocity="10.47" />
+    <dynamics
+      damping="0.05"
+      friction="0.05" />
+  </joint>
+  <link
+    name="RWR_link">
+    <inertial>
+      <origin
+        xyz="2.3009E-10 0.0050603 -0.04305"
+        rpy="0 0 0" />
+      <mass
+        value="0.15675" />
+      <inertia
+        ixx="5.9396E-05"
+        ixy="-6.4446E-13"
+        ixz="-5.7068E-09"
+        iyy="5.8786E-05"
+        iyz="6.5271E-07"
+        izz="5.9559E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/RWR_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision name="RWR_link_main">
+      <origin xyz="0 0 -0.053" rpy="1.57 0 0"/>
+      <geometry>
+        <cylinder radius="0.03" length="0.05"/>
+      </geometry>
+    </collision>
+
+    <collision name="RWR_link_mount">
+      <origin xyz="0 0.03 -0.033" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.05 0.004 0.06"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RWR_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.0235 -0.1244"
+      rpy="0 0 0" />
+    <parent
+      link="REP_link" />
+    <child
+      link="RWR_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="7"
+      velocity="10.47" />
+    <dynamics
+      damping="0.05"
+      friction="0.05" />
+  </joint>
+  <link
+    name="RWP_link">
+    <inertial>
+      <origin
+        xyz="-0.0016414 0.025392 -0.064653"
+        rpy="0 0 0" />
+      <mass
+        value="0.17262" />
+      <inertia
+        ixx="6.9076E-05"
+        ixy="6.4136E-13"
+        ixz="-2.1656E-06"
+        iyy="7.0471E-05"
+        iyz="3.4482E-06"
+        izz="6.5933E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/RWP_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision name="RWP_link_main">
+      <origin xyz="-0.0015 0.026 -0.078" rpy="0 1.57 0"/>
+      <geometry>
+        <cylinder radius="0.03" length="0.053"/>
+      </geometry>
+    </collision>
+    <collision name="RWP_link_mount">
+      <origin xyz="0 0 -0.0115" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.036 0.004 0.056"/>
+      </geometry>
+    </collision>
+    <collision name="RWP_link_mount1">
+      <origin xyz="-0.027 0.028 -0.0442" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.003 0.0271 0.0124"/>
+      </geometry>
+    </collision>   
+    <collision name="RWP_link_mount2">
+      <origin xyz="-0.0027 0.0212 -0.038" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0415 0.0435 0.006"/>
+      </geometry>
+    </collision>        
+  </link>
+  <joint
+    name="RWP_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.0284 -0.049899"
+      rpy="0 0 0" />
+    <parent
+      link="RWR_link" />
+    <child
+      link="RWP_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="7"
+      velocity="10.47" />
+    <dynamics
+      damping="0.05"
+      friction="0.05" />
+  </joint>
+  <link
+    name="RWY_link">
+    <inertial>
+      <origin
+        xyz="-0.025989 -8.2357E-07 -0.072885"
+        rpy="0 0 0" />
+      <mass
+        value="0.14311" />
+      <inertia
+        ixx="0.0001351"
+        ixy="-2.218E-09"
+        ixz="-3.6162E-06"
+        iyy="3.6435E-05"
+        iyz="3.4239E-10"
+        izz="0.00014744" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/RWY_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision name="RWY_link_main">
+      <origin xyz="-0.0304 0 -0.0583" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.023" length="0.0471"/>
+      </geometry>
+    </collision>
+    <collision name="RWY_link_mount">
+      <origin xyz="0 0 -0.0075" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.003 0.04 0.055"/>
+      </geometry>
+    </collision>
+    <collision name="RWY_link_pinion">
+      <origin xyz="-0.0304 0 -0.094" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0535 0.126 0.024"/>
+      </geometry>
+    </collision>   
+  </link>
+  <joint
+    name="RWY_joint"
+    type="revolute">
+    <origin
+      xyz="0.0304 0.0284 -0.076"
+      rpy="0 0 0" />
+    <parent
+      link="RWP_link" />
+    <child
+      link="RWY_link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="7"
+      velocity="10.47" />
+    <dynamics
+      damping="0.05"
+      friction="0.05" />
+  </joint>
+  <link
+    name="RGRF_link">
+    <inertial>
+      <origin
+        xyz="-1.4993E-10 1.2259E-05 -0.0098954"
+        rpy="0 0 0" />
+      <mass
+        value="0.025769" />
+      <inertia
+        ixx="4.2118E-06"
+        ixy="1.4492E-22"
+        ixz="6.0762E-22"
+        iyy="1.2066E-05"
+        iyz="1.8787E-07"
+        izz="8.6788E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/RGRF_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision name="RGRF_link_box">
+      <origin xyz="0 0 -0.016" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0535 0.014 0.035"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RGRF_joint"
+    type="prismatic">
+    <origin
+      xyz="-0.0304 -0.0515 -0.10975"
+      rpy="0 0 0" />
+    <parent
+      link="RWY_link" />
+    <child
+      link="RGRF_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0.04"
+      effort="1.8"
+      velocity="0.3" />
+  </joint>
+  <link
+    name="RGLF_link">
+    <inertial>
+      <origin
+        xyz="1.0343E-11 -1.2259E-05 -0.0098955"
+        rpy="0 0 0" />
+      <mass
+        value="0.025769" />
+      <inertia
+        ixx="4.2118E-06"
+        ixy="-3.6494E-22"
+        ixz="2.7143E-21"
+        iyy="1.2066E-05"
+        iyz="-1.8787E-07"
+        izz="8.6788E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/RGLF_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision name="RGLF_link_box">
+      <origin xyz="0 0 -0.016" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0535 0.014 0.035"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RGLF_joint"
+    type="prismatic">
+    <origin
+      xyz="-0.0304 0.0515 -0.10975"
+      rpy="0 0 0" />
+    <parent
+      link="RWY_link" />
+    <child
+      link="RGLF_link" />
+    <axis
+      xyz="0 1 0" />
+    <mimic joint="RGRF_joint" multiplier="-1.0" />
+    <limit
+      lower="-0.04"
+      upper="0"
+      effort="1.8"
+      velocity="0.3" />
+    <dynamics
+      damping="0.05"
+      friction="0.05" />
+  </joint>
+  <link
+    name="T2LS_link">
+    <inertial>
+      <origin
+        xyz="1.1662E-05 0.027974 0.026802"
+        rpy="0 0 0" />
+      <mass
+        value="0.49232" />
+      <inertia
+        ixx="0.00053947"
+        ixy="-1.1182E-07"
+        ixz="6.3739E-08"
+        iyy="0.00105"
+        iyz="-7.5262E-05"
+        izz="0.00087713" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/T2LS_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.77647 0.75686 0.73725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0.046 0.06" rpy="1.7 0 0"/>
+      <geometry>
+        <cylinder radius="0.053" length="0.06"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="T2LS_joint"
+    type="fixed">
+    <origin
+      xyz="0 0.061536 -0.046174"
+      rpy="0 0 0" />
+    <parent
+      link="torso_link" />
+    <child
+      link="T2LS_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="LSP_link">
+    <inertial>
+      <origin
+        xyz="-0.0015388 0.053054 3.8328E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.17559" />
+      <inertia
+        ixx="0.00019619"
+        ixy="-8.3208E-08"
+        ixz="1.6412E-08"
+        iyy="0.00012479"
+        iyz="-7.8681E-08"
+        izz="0.00010732" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/LSP_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.86667 0.9098 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0.068 0" rpy="0 1.57 0"/>
+      <geometry>
+        <cylinder radius="0.053" length="0.05"/>
+      </geometry>
+    </collision>
+
+    <!-- Side mounting bracket -->
+    <collision>
+      <origin xyz="0 0.0125 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.05 0.02 0.05"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LSP_joint"
+    type="revolute">
+    <origin
+      xyz="0 0.078736 0.065888"
+      rpy="0.13963 0 0" />
+    <parent
+      link="T2LS_link" />
+    <child
+      link="LSP_link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="35"
+      velocity="10.47" />
+    <dynamics
+      damping="0.05"
+      friction="0.05" />
+  </joint>
+  <link
+    name="LSY_link">
+    <inertial>
+      <origin
+        xyz="-0.00694 -4.0801E-15 -0.037821"
+        rpy="0 0 0" />
+      <mass
+        value="0.053339" />
+      <inertia
+        ixx="2.5402E-05"
+        ixy="-1.2859E-21"
+        ixz="-8.1208E-07"
+        iyy="2.2164E-05"
+        iyz="-1.4228E-20"
+        izz="1.1182E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/LSY_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <!-- Vertical plate -->
+      <origin xyz="0 0 -0.03" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.05 0.09"/>
+      </geometry>
+    </collision>
+
+    <collision>
+      <!-- Bottom horizontal plate -->
+      <origin xyz="-0.02 0 -0.065" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.05 0.05 0.01"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LSY_joint"
+    type="revolute">
+    <origin
+      xyz="0.031 0.06875 0"
+      rpy="-0.13963 0 0" />
+    <parent
+      link="LSP_link" />
+    <child
+      link="LSY_link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="35"
+      velocity="10.47" />
+    <dynamics
+      damping="0.05"
+      friction="0.05" />
+  </joint>
+  <link
+    name="LSR_link">
+    <inertial>
+      <origin
+        xyz="-5.7058E-05 -0.0012378 -0.11682"
+        rpy="0 0 0" />
+      <mass
+        value="0.35852" />
+      <inertia
+        ixx="0.00067036"
+        ixy="6.1426E-08"
+        ixz="5.6197E-09"
+        iyy="0.00058704"
+        iyz="-3.9806E-06"
+        izz="0.00035439" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/LSR_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89412 0.89412 0.89412 1" />
+      </material>
+    </visual>
+    <collision name="LSR_link_middlepart">
+      <origin
+        xyz="0 0 -0.09"
+        rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.055" length="0.18"/>
+      </geometry>
+    </collision>
+    <collision name="LSR_link_elbowmotor">
+      <origin
+        xyz="0 0 -0.23"
+        rpy="1.57 0 0" />
+      <geometry>
+        <cylinder radius="0.05" length="0.06"/>
+      </geometry>
+    </collision>    
+  </link>
+  <joint
+    name="LSR_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0275 0 -0.07875"
+      rpy="0 0 0" />
+    <parent
+      link="LSY_link" />
+    <child
+      link="LSR_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="25"
+      velocity="10.47" />
+    <dynamics
+      damping="0.05"
+      friction="0.05" />
+  </joint>
+  <link
+    name="LEP_link">
+    <inertial>
+      <origin
+        xyz="2.7528E-07 0.019327 -0.081159"
+        rpy="0 0 0" />
+      <mass
+        value="0.16062" />
+      <inertia
+        ixx="6.3488E-05"
+        ixy="-5.7068E-09"
+        ixz="-8.1088E-10"
+        iyy="6.5851E-05"
+        iyz="3.6027E-07"
+        izz="5.6992E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/LEP_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision name="LEP_link_main">
+      <origin xyz="0 0.025 -0.093" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.03" length="0.05"/>
+      </geometry>
+    </collision>
+
+    <collision name="LEP_link_mount">
+      <origin xyz="0 0 -0.03" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.05 0.005 0.08"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LEP_joint"
+    type="revolute">
+    <origin
+      xyz="-1.4714E-05 -0.028015 -0.22617"
+      rpy="0 0 0" />
+    <parent
+      link="LSR_link" />
+    <child
+      link="LEP_link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="25"
+      velocity="10.47" />
+    <dynamics
+      damping="0.05"
+      friction="0.05" />
+  </joint>
+  <link
+    name="LWR_link">
+    <inertial>
+      <origin
+        xyz="2.1426E-10 0.0050603 -0.04305"
+        rpy="0 0 0" />
+      <mass
+        value="0.15675" />
+      <inertia
+        ixx="5.9396E-05"
+        ixy="-6.1312E-13"
+        ixz="-5.7068E-09"
+        iyy="5.8786E-05"
+        iyz="6.5271E-07"
+        izz="5.9559E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/LWR_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision name="LWR_link_main">
+      <origin xyz="0 0 -0.053" rpy="1.57 0 0"/>
+      <geometry>
+        <cylinder radius="0.03" length="0.05"/>
+      </geometry>
+    </collision>
+
+    <collision name="LWR_link_mount">
+      <origin xyz="0 0.03 -0.033" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.05 0.004 0.06"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LWR_joint"
+    type="revolute">
+    <origin
+      xyz="0 0.0235 -0.1244"
+      rpy="0 0 0" />
+    <parent
+      link="LEP_link" />
+    <child
+      link="LWR_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="7"
+      velocity="10.47" />
+    <dynamics
+      damping="0.05"
+      friction="0.05" />
+  </joint>
+  <link
+    name="LWP_link">
+    <inertial>
+      <origin
+        xyz="-0.0016414 0.025392 -0.064653"
+        rpy="0 0 0" />
+      <mass
+        value="0.17262" />
+      <inertia
+        ixx="6.9076E-05"
+        ixy="6.1312E-13"
+        ixz="-2.1656E-06"
+        iyy="7.0471E-05"
+        iyz="3.4482E-06"
+        izz="6.5933E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/LWP_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision name="LWP_link_main">
+      <origin xyz="-0.0015 0.026 -0.078" rpy="0 1.57 0"/>
+      <geometry>
+        <cylinder radius="0.03" length="0.053"/>
+      </geometry>
+    </collision>
+    <collision name="LWP_link_mount">
+      <origin xyz="0 0 -0.0115" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.036 0.004 0.056"/>
+      </geometry>
+    </collision>
+    <collision name="LWP_link_mount1">
+      <origin xyz="-0.027 0.028 -0.0442" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.003 0.0271 0.0124"/>
+      </geometry>
+    </collision>   
+    <collision name="LWP_link_mount2">
+      <origin xyz="-0.0027 0.0212 -0.038" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0415 0.0435 0.006"/>
+      </geometry>
+    </collision>  
+  </link>
+  <joint
+    name="LWP_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.0284 -0.049899"
+      rpy="0 0 0" />
+    <parent
+      link="LWR_link" />
+    <child
+      link="LWP_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="7"
+      velocity="10.47" />
+    <dynamics
+      damping="0.05"
+      friction="0.05" />
+  </joint>
+  <link
+    name="LWY_link">
+    <inertial>
+      <origin
+        xyz="-0.025989 -8.234E-07 -0.072885"
+        rpy="0 0 0" />
+      <mass
+        value="0.14311" />
+      <inertia
+        ixx="0.0001351"
+        ixy="-2.218E-09"
+        ixz="-3.6162E-06"
+        iyy="3.6435E-05"
+        iyz="3.4239E-10"
+        izz="0.00014744" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/LWY_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.86667 0.9098 1 1" />
+      </material>
+    </visual>
+    <collision name="lWY_link_main">
+      <origin xyz="-0.0304 0 -0.0583" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.023" length="0.0471"/>
+      </geometry>
+    </collision>
+    <collision name="lWY_link_mount">
+      <origin xyz="0 0 -0.0075" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.003 0.04 0.055"/>
+      </geometry>
+    </collision>
+    <collision name="lWY_link_pinion">
+      <origin xyz="-0.0304 0 -0.094" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0535 0.126 0.024"/>
+      </geometry>
+    </collision>  
+  </link>
+  <joint
+    name="LWY_joint"
+    type="revolute">
+    <origin
+      xyz="0.0304 0.0284 -0.076"
+      rpy="0 0 0" />
+    <parent
+      link="LWP_link" />
+    <child
+      link="LWY_link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="7"
+      velocity="10.47" />
+    <dynamics
+      damping="0.05"
+      friction="0.05" />
+  </joint>
+  <link
+    name="LGRF_link">
+    <inertial>
+      <origin
+        xyz="-1.2815E-08 1.2259E-05 -0.0098954"
+        rpy="0 0 0" />
+      <mass
+        value="0.025769" />
+      <inertia
+        ixx="4.2118E-06"
+        ixy="-6.2859E-22"
+        ixz="-1.6764E-21"
+        iyy="1.2066E-05"
+        iyz="1.8787E-07"
+        izz="8.6788E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/LGRF_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision name="LGRF_link_box">
+      <origin xyz="0 0 -0.016" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0535 0.014 0.035"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LGRF_joint"
+    type="prismatic">
+    <origin
+      xyz="-0.0304 -0.0515 -0.10975"
+      rpy="0 0 0" />
+    <parent
+      link="LWY_link" />
+    <child
+      link="LGRF_link" />
+    <axis
+      xyz="0 1 0" />  
+    <limit
+      lower="0"
+      upper="0.04"
+      effort="1.8"
+      velocity="0.3" />
+    <dynamics
+      damping="0.05"
+      friction="0.05" />
+  </joint>
+  <link
+    name="LGLF_link">
+    <inertial>
+      <origin
+        xyz="-8.5901E-13 -1.2259E-05 -0.0098955"
+        rpy="0 0 0" />
+      <mass
+        value="0.025769" />
+      <inertia
+        ixx="4.2118E-06"
+        ixy="4.3305E-21"
+        ixz="-1.2399E-21"
+        iyy="1.2066E-05"
+        iyz="-1.8787E-07"
+        izz="8.6788E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/LGLF_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision name="LGLF_link_box">
+      <origin xyz="0 0 -0.016" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0535 0.014 0.035"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LGLF_joint"
+    type="prismatic">
+    <origin
+      xyz="-0.0304 0.0515 -0.10975"
+      rpy="0 0 0" />
+    <parent
+      link="LWY_link" />
+    <child
+      link="LGLF_link" />
+    <axis
+      xyz="0 1 0" />
+    <mimic joint="LGRF_joint" multiplier="-1.0" />  
+    <limit
+      lower="-0.04"
+      upper="0"
+      effort="1.8"
+      velocity="0.3" />
+    <dynamics
+      damping="0.05"
+      friction="0.05" />
+  </joint>
+</robot>

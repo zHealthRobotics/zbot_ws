@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="zbot">
+
+  <!-- Base URDF -->
+  <xacro:include filename="zbot_base.urdf.xacro" />
+  
+  <!-- ARM + TORSO URDF -->
+  <xacro:include filename="zbot_arms_torso.xacro" />  
+
+  <joint name="base_to_torso" type="fixed">
+    <parent link="top_box_link"/>
+    <child link="torso_footprint"/>
+    <origin xyz="0 0 0.01" rpy="0 0 0"/>
+  </joint> 
+
+</robot>

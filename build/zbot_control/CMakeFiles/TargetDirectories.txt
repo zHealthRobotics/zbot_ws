@@ -1,0 +1,9 @@
+/home/suvi/zbot_ws/build/zbot_control/CMakeFiles/uninstall.dir
+/home/suvi/zbot_ws/build/zbot_control/CMakeFiles/zbot_control_uninstall.dir
+/home/suvi/zbot_ws/build/zbot_control/CMakeFiles/test.dir
+/home/suvi/zbot_ws/build/zbot_control/CMakeFiles/edit_cache.dir
+/home/suvi/zbot_ws/build/zbot_control/CMakeFiles/rebuild_cache.dir
+/home/suvi/zbot_ws/build/zbot_control/CMakeFiles/list_install_components.dir
+/home/suvi/zbot_ws/build/zbot_control/CMakeFiles/install.dir
+/home/suvi/zbot_ws/build/zbot_control/CMakeFiles/install/local.dir
+/home/suvi/zbot_ws/build/zbot_control/CMakeFiles/install/strip.dir

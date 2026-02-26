@@ -1,0 +1,23 @@
+-- Install configuration: ""
+-- Up-to-date: /home/suvi/zbot_ws/install/zbot_control/share/zbot_control/urdf
+-- Up-to-date: /home/suvi/zbot_ws/install/zbot_control/share/zbot_control/urdf/zbot_control.urdf.xacro
+-- Up-to-date: /home/suvi/zbot_ws/install/zbot_control/share/zbot_control/urdf/ros2_control.xacro
+-- Up-to-date: /home/suvi/zbot_ws/install/zbot_control/share/zbot_control/launch
+-- Up-to-date: /home/suvi/zbot_ws/install/zbot_control/share/zbot_control/launch/gazebo.launch.py
+-- Up-to-date: /home/suvi/zbot_ws/install/zbot_control/share/zbot_control/config
+-- Up-to-date: /home/suvi/zbot_ws/install/zbot_control/share/zbot_control/config/ros2_controllers.yaml
+-- Up-to-date: /home/suvi/zbot_ws/install/zbot_control/share/ament_index/resource_index/package_run_dependencies/zbot_control
+-- Up-to-date: /home/suvi/zbot_ws/install/zbot_control/share/ament_index/resource_index/parent_prefix_path/zbot_control
+-- Up-to-date: /home/suvi/zbot_ws/install/zbot_control/share/zbot_control/environment/ament_prefix_path.sh
+-- Up-to-date: /home/suvi/zbot_ws/install/zbot_control/share/zbot_control/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/suvi/zbot_ws/install/zbot_control/share/zbot_control/environment/path.sh
+-- Up-to-date: /home/suvi/zbot_ws/install/zbot_control/share/zbot_control/environment/path.dsv
+-- Up-to-date: /home/suvi/zbot_ws/install/zbot_control/share/zbot_control/local_setup.bash
+-- Up-to-date: /home/suvi/zbot_ws/install/zbot_control/share/zbot_control/local_setup.sh
+-- Up-to-date: /home/suvi/zbot_ws/install/zbot_control/share/zbot_control/local_setup.zsh
+-- Up-to-date: /home/suvi/zbot_ws/install/zbot_control/share/zbot_control/local_setup.dsv
+-- Installing: /home/suvi/zbot_ws/install/zbot_control/share/zbot_control/package.dsv
+-- Up-to-date: /home/suvi/zbot_ws/install/zbot_control/share/ament_index/resource_index/packages/zbot_control
+-- Up-to-date: /home/suvi/zbot_ws/install/zbot_control/share/zbot_control/cmake/zbot_controlConfig.cmake
+-- Up-to-date: /home/suvi/zbot_ws/install/zbot_control/share/zbot_control/cmake/zbot_controlConfig-version.cmake
+-- Up-to-date: /home/suvi/zbot_ws/install/zbot_control/share/zbot_control/package.xml

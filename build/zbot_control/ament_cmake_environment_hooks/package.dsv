@@ -1,0 +1,4 @@
+source;share/zbot_control/local_setup.bash
+source;share/zbot_control/local_setup.dsv
+source;share/zbot_control/local_setup.sh
+source;share/zbot_control/local_setup.zsh

@@ -6,8 +6,6 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /RobotModel1
-        - /RobotModel1/Links1
       Splitter Ratio: 0.5
     Tree Height: 719
   - Class: rviz_common/Selection
@@ -51,7 +49,7 @@ Visualization Manager:
       Value: true
     - Alpha: 1
       Class: rviz_default_plugins/RobotModel
-      Collision Enabled: true
+      Collision Enabled: false
       Description File: ""
       Description Source: Topic
       Description Topic:
@@ -62,7 +60,7 @@ Visualization Manager:
         Value: /robot_description
       Enabled: true
       Links:
-        All Links Enabled: false
+        All Links Enabled: true
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
@@ -70,103 +68,103 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         LGLF_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         LGRF_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         LSP_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         LSR_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         LSY_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         LWP_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         LWR_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         LWY_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         Left_wheel_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         Link Tree Style: Links in Alphabetic Order
         REP_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         RGLF_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         RGRF_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         RSP_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         RSR_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         RSY_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         RWP_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         RWR_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         RWY_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         Right_wheel_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         T2LS_link:
           Alpha: 1
           Show Axes: false
@@ -176,7 +174,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         base_footprint:
           Alpha: 1
           Show Axes: false
@@ -185,32 +183,32 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         holder1_Link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         holder2_Link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         holder3_Link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         holder4_Link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         top_box_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         torso_footprint:
           Alpha: 1
           Show Axes: false
@@ -219,27 +217,27 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         wheel1_Link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         wheel2_Link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         wheel3_Link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
         wheel4_Link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: false
+          Value: true
       Mass Properties:
         Inertia: false
         Mass: false
@@ -249,19 +247,133 @@ Visualization Manager:
       Value: true
       Visual Enabled: true
     - Class: rviz_default_plugins/TF
-      Enabled: false
+      Enabled: true
       Frame Timeout: 15
       Frames:
         All Enabled: true
+        LEP_link:
+          Value: true
+        LGLF_link:
+          Value: true
+        LGRF_link:
+          Value: true
+        LSP_link:
+          Value: true
+        LSR_link:
+          Value: true
+        LSY_link:
+          Value: true
+        LWP_link:
+          Value: true
+        LWR_link:
+          Value: true
+        LWY_link:
+          Value: true
+        Left_wheel_link:
+          Value: true
+        REP_link:
+          Value: true
+        RGLF_link:
+          Value: true
+        RGRF_link:
+          Value: true
+        RSP_link:
+          Value: true
+        RSR_link:
+          Value: true
+        RSY_link:
+          Value: true
+        RWP_link:
+          Value: true
+        RWR_link:
+          Value: true
+        RWY_link:
+          Value: true
+        Right_wheel_link:
+          Value: true
+        T2LS_link:
+          Value: true
+        T2RS_link:
+          Value: true
+        base_footprint:
+          Value: true
+        chassis_link:
+          Value: true
+        holder1_Link:
+          Value: true
+        holder2_Link:
+          Value: true
+        holder3_Link:
+          Value: true
+        holder4_Link:
+          Value: true
+        top_box_link:
+          Value: true
+        torso_footprint:
+          Value: true
+        torso_link:
+          Value: true
+        wheel1_Link:
+          Value: true
+        wheel2_Link:
+          Value: true
+        wheel3_Link:
+          Value: true
+        wheel4_Link:
+          Value: true
       Marker Scale: 0.4000000059604645
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: false
       Tree:
-        {}
+        base_footprint:
+          chassis_link:
+            Left_wheel_link:
+              {}
+            Right_wheel_link:
+              {}
+            holder1_Link:
+              wheel1_Link:
+                {}
+            holder2_Link:
+              wheel2_Link:
+                {}
+            holder3_Link:
+              wheel3_Link:
+                {}
+            holder4_Link:
+              wheel4_Link:
+                {}
+            top_box_link:
+              torso_footprint:
+                torso_link:
+                  T2LS_link:
+                    LSP_link:
+                      LSY_link:
+                        LSR_link:
+                          LEP_link:
+                            LWR_link:
+                              LWP_link:
+                                LWY_link:
+                                  LGLF_link:
+                                    {}
+                                  LGRF_link:
+                                    {}
+                  T2RS_link:
+                    RSP_link:
+                      RSY_link:
+                        RSR_link:
+                          REP_link:
+                            RWR_link:
+                              RWP_link:
+                                RWY_link:
+                                  RGLF_link:
+                                    {}
+                                  RGRF_link:
+                                    {}
       Update Interval: 0
-      Value: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -308,25 +420,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 0.7562206983566284
+      Distance: 2.820765256881714
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.2586916387081146
-        Y: 0.0026649702340364456
-        Z: 1.2889753580093384
+        X: -0.1972562074661255
+        Y: -0.06401307135820389
+        Z: 0.8067106604576111
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.23039869964122772
+      Pitch: 0.2653985023498535
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.2003982961177826
+      Yaw: 0.1653972566127777
     Saved: ~
 Window Geometry:
   Displays:

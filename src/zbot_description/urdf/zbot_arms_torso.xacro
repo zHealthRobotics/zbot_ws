@@ -26,7 +26,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/torso_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/torso_link.STL" />
       </geometry>
       <material
         name="">
@@ -40,7 +40,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/torso_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/torso_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -73,7 +73,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/T2RS_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/T2RS_link.STL" />
       </geometry>
       <material
         name="">
@@ -123,7 +123,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/RSP_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/RSP_link.STL" />
       </geometry>
       <material
         name="">
@@ -190,7 +190,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/RSY_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/RSY_link.STL" />
       </geometry>
       <material
         name="">
@@ -257,7 +257,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/RSR_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/RSR_link.STL" />
       </geometry>
       <material
         name="">
@@ -325,7 +325,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/REP_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/REP_link.STL" />
       </geometry>
       <material
         name="">
@@ -390,7 +390,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/RWR_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/RWR_link.STL" />
       </geometry>
       <material
         name="">
@@ -455,7 +455,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/RWP_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/RWP_link.STL" />
       </geometry>
       <material
         name="">
@@ -531,7 +531,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/RWY_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/RWY_link.STL" />
       </geometry>
       <material
         name="">
@@ -601,7 +601,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/RGRF_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/RGRF_link.STL" />
       </geometry>
       <material
         name="">
@@ -656,7 +656,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/RGLF_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/RGLF_link.STL" />
       </geometry>
       <material
         name="">
@@ -715,7 +715,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/T2LS_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/T2LS_link.STL" />
       </geometry>
       <material
         name="">
@@ -765,7 +765,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/LSP_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/LSP_link.STL" />
       </geometry>
       <material
         name="">
@@ -831,7 +831,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/LSY_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/LSY_link.STL" />
       </geometry>
       <material
         name="">
@@ -898,7 +898,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/LSR_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/LSR_link.STL" />
       </geometry>
       <material
         name="">
@@ -966,7 +966,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/LEP_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/LEP_link.STL" />
       </geometry>
       <material
         name="">
@@ -1031,7 +1031,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/LWR_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/LWR_link.STL" />
       </geometry>
       <material
         name="">
@@ -1096,7 +1096,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/LWP_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/LWP_link.STL" />
       </geometry>
       <material
         name="">
@@ -1172,7 +1172,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/LWY_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/LWY_link.STL" />
       </geometry>
       <material
         name="">
@@ -1242,7 +1242,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/LGRF_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/LGRF_link.STL" />
       </geometry>
       <material
         name="">
@@ -1300,7 +1300,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/LGLF_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/LGLF_link.STL" />
       </geometry>
       <material
         name="">

@@ -23,7 +23,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/chassis_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/chassis_link.STL" />
       </geometry>
       <material
         name="">
@@ -105,7 +105,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/Left_wheel_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Left_wheel_link.STL" />
       </geometry>
       <material
         name="">
@@ -119,7 +119,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/Left_wheel_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Left_wheel_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -161,7 +161,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/Right_wheel_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Right_wheel_link.STL" />
       </geometry>
       <material
         name="">
@@ -175,7 +175,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/Right_wheel_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Right_wheel_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -217,7 +217,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/holder1_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/holder1_Link.STL" />
       </geometry>
       <material
         name="">
@@ -231,7 +231,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/holder1_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/holder1_Link.STL" />
       </geometry>
     </collision>
   </link>
@@ -273,7 +273,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/wheel1_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/wheel1_Link.STL" />
       </geometry>
       <material
         name="">
@@ -287,7 +287,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/wheel1_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/wheel1_Link.STL" />
       </geometry>
     </collision>
   </link>
@@ -329,7 +329,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/holder2_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/holder2_Link.STL" />
       </geometry>
       <material
         name="">
@@ -343,7 +343,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/holder2_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/holder2_Link.STL" />
       </geometry>
     </collision>
   </link>
@@ -385,7 +385,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/wheel2_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/wheel2_Link.STL" />
       </geometry>
       <material
         name="">
@@ -399,7 +399,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/wheel2_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/wheel2_Link.STL" />
       </geometry>
     </collision>
   </link>
@@ -441,7 +441,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/holder3_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/holder3_Link.STL" />
       </geometry>
       <material
         name="">
@@ -455,7 +455,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/holder3_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/holder3_Link.STL" />
       </geometry>
     </collision>
   </link>
@@ -497,7 +497,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/wheel3_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/wheel3_Link.STL" />
       </geometry>
       <material
         name="">
@@ -511,7 +511,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/wheel3_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/wheel3_Link.STL" />
       </geometry>
     </collision>
   </link>
@@ -553,7 +553,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/holder4_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/holder4_Link.STL" />
       </geometry>
       <material
         name="">
@@ -567,7 +567,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/holder4_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/holder4_Link.STL" />
       </geometry>
     </collision>
   </link>
@@ -609,7 +609,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/wheel4_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/wheel4_Link.STL" />
       </geometry>
       <material
         name="">
@@ -623,7 +623,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file:///home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/wheel4_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/wheel4_Link.STL" />
       </geometry>
     </collision>
   </link>

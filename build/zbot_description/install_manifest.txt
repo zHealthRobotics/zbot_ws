@@ -1,7 +1,6 @@
 /home/suvi/zbot_ws/install/zbot_description/share/zbot_description/urdf/zbot_base.urdf.xacro
 /home/suvi/zbot_ws/install/zbot_description/share/zbot_description/urdf/zbot.urdf.xacro
 /home/suvi/zbot_ws/install/zbot_description/share/zbot_description/urdf/zbot_arms_torso.xacro
-/home/suvi/zbot_ws/install/zbot_description/share/zbot_description/urdf/zbot_arms_torso (copy).xacro
 /home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/LSR_link.STL
 /home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/wheel1_Link.STL
 /home/suvi/zbot_ws/install/zbot_description/share/zbot_description/meshes/RWP_link.STL

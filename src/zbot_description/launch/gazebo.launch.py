@@ -61,9 +61,9 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
-        #gazebo,
+        gazebo,
         robot_state_publisher,
-        #spawn_entity,
+        spawn_entity,
         joint_state_publisher,
         rviz
     ])

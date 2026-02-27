@@ -1,0 +1,27 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: zbot_description
+    relative_path: urdf/zbot.urdf.xacro
+  srdf:
+    relative_path: config/zbot.srdf
+  package_settings:
+    author_name: suvi
+    author_email: suvanshg0@gmail.com
+    generated_timestamp: 1772215586
+  control_xacro:
+    command:
+      - position
+      - effort
+    state:
+      - position
+      - velocity
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+      - effort
+    state:
+      - position
+      - velocity

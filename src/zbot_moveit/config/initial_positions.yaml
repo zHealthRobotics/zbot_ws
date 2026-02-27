@@ -1,0 +1,19 @@
+# Default initial positions for zbot's ros2_control fake system
+
+initial_positions:
+  LEP_joint: 0
+  LGRF_joint: 0
+  LSP_joint: 0
+  LSR_joint: 0
+  LSY_joint: 0
+  LWP_joint: 0
+  LWR_joint: 0
+  LWY_joint: 0
+  REP_joint: 0
+  RGRF_joint: 0
+  RSP_joint: 0
+  RSR_joint: 0
+  RSY_joint: 0
+  RWP_joint: 0
+  RWR_joint: 0
+  RWY_joint: 0

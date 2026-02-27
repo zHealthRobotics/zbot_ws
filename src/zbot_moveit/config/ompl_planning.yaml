@@ -1,0 +1,32 @@
+move_group:
+  ros__parameters:
+
+    default_velocity_scaling_factor: 1.0
+    default_acceleration_scaling_factor: 1.0
+    planning_pipelines:
+      pipeline_names: ["ompl"]
+      default_planning_pipeline: "ompl"
+
+    ompl:
+      planning_plugin: "ompl_interface/OMPLPlanner"
+
+      request_adapters: >-
+        default_planner_request_adapters/AddTimeOptimalParameterization
+        default_planner_request_adapters/FixWorkspaceBounds
+        default_planner_request_adapters/FixStartStateBounds
+        default_planner_request_adapters/FixStartStateCollision
+        default_planner_request_adapters/FixStartStatePathConstraints
+
+      planner_configs:
+        RRTConnectkConfigDefault:
+          type: geometric::RRTConnect
+
+        RRTstarkConfigDefault:
+          type: geometric::RRTstar
+          range: 0.5
+          #goal_bias: 1.0
+          #delay_collision_checking: 1
+
+      arm:
+        default_planner_config: RRTConnectkConfigDefault
+        #planning_time: 3.0

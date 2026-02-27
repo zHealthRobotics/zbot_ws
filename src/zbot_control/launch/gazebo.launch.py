@@ -101,20 +101,20 @@ def generate_launch_description():
         output='screen'
     )
 
-    left_arm_effort_controller = ExecuteProcess(
+    left_gripper_controller = ExecuteProcess(
         cmd=[
             'ros2', 'control', 'load_controller',
             '--set-state', 'active',
-            'left_arm_effort_controller'
+            'left_gripper_controller'
         ],
         output='screen'
     )
 
-    right_arm_effort_controller = ExecuteProcess(
+    right_gripper_controller = ExecuteProcess(
         cmd=[
             'ros2', 'control', 'load_controller',
             '--set-state', 'active',
-            'right_arm_effort_controller'
+            'right_gripper_controller'
         ],
         output='screen'
     )
@@ -140,8 +140,8 @@ def generate_launch_description():
                 on_exit=[
                     load_joint_state_broadcaster,
                     left_arm_trajectory_controller,
-                    #left_arm_effort_controller,
-                    #right_arm_effort_controller,
+                    left_gripper_controller,
+                    right_gripper_controller,
                     right_arm_trajectory_controller
                 ]
             )

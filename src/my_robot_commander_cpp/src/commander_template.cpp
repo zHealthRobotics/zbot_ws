@@ -4,7 +4,7 @@
 #include <my_robot_interfaces/msg/pose_command.hpp>
 #include <geometry_msgs/msg/point.hpp>
 #include <std_msgs/msg/bool.hpp>
-
+#include <tf2/LinearMath/Quaternion.h>
 
 using MoveGroupInterface = moveit::planning_interface::MoveGroupInterface;
 using FloatArray = example_interfaces::msg::Float64MultiArray;
@@ -17,9 +17,16 @@ public:
     Commander(std::shared_ptr<rclcpp::Node> node)
     {
         node_ = node;
-        arm_ = std::make_shared<MoveGroupInterface>(node_, "arm");
-        arm_->setMaxVelocityScalingFactor(1.0);
-        arm_->setMaxAccelerationScalingFactor(1.0);
+
+        // 🔹 Two Move Groups
+        left_arm_  = std::make_shared<MoveGroupInterface>(node_, "left_arm");
+        right_arm_ = std::make_shared<MoveGroupInterface>(node_, "right_arm");
+
+        left_arm_->setMaxVelocityScalingFactor(1.0);
+        left_arm_->setMaxAccelerationScalingFactor(1.0);
+
+        right_arm_->setMaxVelocityScalingFactor(1.0);
+        right_arm_->setMaxAccelerationScalingFactor(1.0);
 
         joint_cmd_sub_ = node_->create_subscription<FloatArray>(
             "joint_command", 10,
@@ -29,11 +36,10 @@ public:
             "pose_command", 10,
             std::bind(&Commander::poseCmdCallback, this, _1));
 
-        // ✅ NEW: Position-only command subscriber
-        position_cmd_sub_ = node_->create_subscription<geometry_msgs::msg::Point>(
+        position_cmd_sub_ = node_->create_subscription<PoseCmd>(
             "position_command", 10,
             std::bind(&Commander::positionCmdCallback, this, _1));
-            
+
         lock_orientation_sub_ = node_->create_subscription<std_msgs::msg::Bool>(
             "/lock_orientation", 10,
             std::bind(&Commander::lockOrientationCallback, this, _1));
@@ -41,38 +47,61 @@ public:
         clear_constraints_sub_ = node_->create_subscription<std_msgs::msg::Bool>(
             "/clear_constraints", 10,
             std::bind(&Commander::clearConstraintsCallback, this, _1));
-                    
-                    
-        execution_done_pub_ = node_->create_publisher<std_msgs::msg::Bool>("/commander/execution_done", 10);
-    
+
+        execution_done_pub_ =
+            node_->create_publisher<std_msgs::msg::Bool>("/commander/execution_done", 10);
     }
 
-    void goToNamedTarget(const std::string &name)
+private:
+
+    // 🔹 Helper to select arm
+    std::shared_ptr<MoveGroupInterface> getArm(const std::string &arm_name)
     {
-        arm_->setStartStateToCurrentState();
-        arm_->setNamedTarget(name);
-        planAndExecute(arm_);
+        if (arm_name == "left")
+            return left_arm_;
+        else
+            return right_arm_;
     }
 
-    void goToJointTarget(const std::vector<double> &joints)
+    void planAndExecute(const std::shared_ptr<MoveGroupInterface> &arm)
     {
-        arm_->setStartStateToCurrentState();
-        arm_->setJointValueTarget(joints);
-        planAndExecute(arm_);
+        MoveGroupInterface::Plan plan;
+        bool success =
+            (arm->plan(plan) == moveit::core::MoveItErrorCode::SUCCESS);
+
+        if (success)
+        {
+            arm->execute(plan);
+            std_msgs::msg::Bool msg;
+            msg.data = true;
+            execution_done_pub_->publish(msg);
+        }
     }
 
-    // ✅ Position-only motion
-    void goToPositionTarget(double x, double y, double z)
+    // 🔹 Joint Target
+    void goToJointTarget(std::shared_ptr<MoveGroupInterface> arm,
+                         const std::vector<double> &joints)
     {
-        arm_->setStartStateToCurrentState();
-        arm_->clearPoseTargets(); 
-        arm_->setPositionTarget(x, y, z);
-        planAndExecute(arm_);
+        arm->setStartStateToCurrentState();
+        arm->setJointValueTarget(joints);
+        planAndExecute(arm);
     }
 
-    void goToPoseTarget(double x, double y, double z,
+    // 🔹 Position Target
+    void goToPositionTarget(std::shared_ptr<MoveGroupInterface> arm,
+                            double x, double y, double z)
+    {
+        arm->setStartStateToCurrentState();
+        arm->clearPoseTargets();
+        arm->setPositionTarget(x, y, z);
+        planAndExecute(arm);
+    }
+
+    // 🔹 Pose Target
+    void goToPoseTarget(std::shared_ptr<MoveGroupInterface> arm,
+                        double x, double y, double z,
                         double roll, double pitch, double yaw,
-                        bool cartesian_path = false)
+                        bool cartesian_path)
     {
         tf2::Quaternion q;
         q.setRPY(roll, pitch, yaw);
@@ -88,127 +117,108 @@ public:
         target_pose.pose.orientation.z = q.z();
         target_pose.pose.orientation.w = q.w();
 
-        arm_->setStartStateToCurrentState();
-        
-        arm_->clearPoseTargets(); 
+        arm->setStartStateToCurrentState();
+        arm->clearPoseTargets();
 
         if (!cartesian_path)
         {
-            arm_->setPoseTarget(target_pose);
-            planAndExecute(arm_);
+            arm->setPoseTarget(target_pose);
+            planAndExecute(arm);
         }
         else
         {
             std::vector<geometry_msgs::msg::Pose> waypoints;
             waypoints.push_back(target_pose.pose);
+
             moveit_msgs::msg::RobotTrajectory trajectory;
 
-            double eef_step = 0.01;
-            double jump_threshold = 0.0;
-            bool avoid_collisions = true;
-
-            double fraction = arm_->computeCartesianPath(
-                waypoints, eef_step, jump_threshold, trajectory, avoid_collisions);
+            double fraction = arm->computeCartesianPath(
+                waypoints, 0.01, 0.0, trajectory, true);
 
             if (fraction > 0.4)
             {
-                arm_->execute(trajectory);            
+                arm->execute(trajectory);
                 std_msgs::msg::Bool msg;
                 msg.data = true;
-                execution_done_pub_->publish(msg);    
+                execution_done_pub_->publish(msg);
             }
         }
     }
 
-    void lockEndEffectorOrientation(double tol = 1.2)
-    {
-        moveit_msgs::msg::OrientationConstraint ocm;
-
-        ocm.link_name = arm_->getEndEffectorLink();
-        ocm.header.frame_id = "torso_link";
-
-        auto pose = arm_->getCurrentPose().pose;
-        ocm.orientation = pose.orientation;
-
-        ocm.absolute_x_axis_tolerance = tol;
-        ocm.absolute_y_axis_tolerance = tol;
-        ocm.absolute_z_axis_tolerance = M_PI;  // allow yaw
-
-        ocm.weight = 1.0;
-
-        moveit_msgs::msg::Constraints constraints;
-        constraints.orientation_constraints.push_back(ocm);
-
-        arm_->setPathConstraints(constraints);
-    }
-
-
-private:
-    void planAndExecute(const std::shared_ptr<MoveGroupInterface> &interface)
-    {
-        MoveGroupInterface::Plan plan;
-        bool success =
-            (interface->plan(plan) == moveit::core::MoveItErrorCode::SUCCESS);
-
-        if (success)
-        {
-            interface->execute(plan);
-            std_msgs::msg::Bool msg;
-            msg.data = true;
-            execution_done_pub_->publish(msg);
-        }
-    }
+    // 🔹 Callbacks
 
     void jointCmdCallback(const FloatArray &msg)
     {
-        if (msg.data.size() == 7)
-        {
-            goToJointTarget(msg.data);
-        }
+        if (msg.data.size() != 8) return;
+
+        std::string arm_name = (msg.data[0] == 0) ? "left" : "right";
+        std::vector<double> joints(msg.data.begin() + 1, msg.data.end());
+
+        auto arm = getArm(arm_name);
+        goToJointTarget(arm, joints);
     }
 
     void poseCmdCallback(const PoseCmd &msg)
     {
+        auto arm = getArm(msg.arm);
+
         goToPoseTarget(
+            arm,
             msg.x, msg.y, msg.z,
             msg.roll, msg.pitch, msg.yaw,
             msg.cartesian_path);
     }
 
-    // ✅ NEW: Position command callback
-    void positionCmdCallback(const geometry_msgs::msg::Point &msg)
+    void positionCmdCallback(const PoseCmd &msg)
     {
-        goToPositionTarget(msg.x, msg.y, msg.z);
+        auto arm = getArm(msg.arm);
+        goToPositionTarget(arm, msg.x, msg.y, msg.z);
     }
-    
+
     void lockOrientationCallback(const std_msgs::msg::Bool &msg)
     {
         if (!msg.data) return;
 
-        lockEndEffectorOrientation();
-        RCLCPP_INFO(node_->get_logger(), "End-effector orientation LOCKED");
+        auto arm = left_arm_; // example lock left by default
+
+        moveit_msgs::msg::OrientationConstraint ocm;
+        ocm.link_name = arm->getEndEffectorLink();
+        ocm.header.frame_id = "torso_link";
+        ocm.orientation = arm->getCurrentPose().pose.orientation;
+
+        ocm.absolute_x_axis_tolerance = 1.2;
+        ocm.absolute_y_axis_tolerance = 1.2;
+        ocm.absolute_z_axis_tolerance = M_PI;
+        ocm.weight = 1.0;
+
+        moveit_msgs::msg::Constraints constraints;
+        constraints.orientation_constraints.push_back(ocm);
+
+        arm->setPathConstraints(constraints);
+
+        RCLCPP_INFO(node_->get_logger(), "Orientation LOCKED");
     }
 
     void clearConstraintsCallback(const std_msgs::msg::Bool &msg)
     {
         if (!msg.data) return;
 
-        arm_->clearPathConstraints();
-        RCLCPP_INFO(node_->get_logger(), "Path constraints CLEARED");
+        left_arm_->clearPathConstraints();
+        right_arm_->clearPathConstraints();
+
+        RCLCPP_INFO(node_->get_logger(), "Constraints CLEARED");
     }
-        
 
     std::shared_ptr<rclcpp::Node> node_;
-    std::shared_ptr<MoveGroupInterface> arm_;
+    std::shared_ptr<MoveGroupInterface> left_arm_;
+    std::shared_ptr<MoveGroupInterface> right_arm_;
 
     rclcpp::Subscription<FloatArray>::SharedPtr joint_cmd_sub_;
     rclcpp::Subscription<PoseCmd>::SharedPtr pose_cmd_sub_;
-    rclcpp::Subscription<geometry_msgs::msg::Point>::SharedPtr position_cmd_sub_;
-    rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr execution_done_pub_;
+    rclcpp::Subscription<PoseCmd>::SharedPtr position_cmd_sub_;
     rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr lock_orientation_sub_;
     rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr clear_constraints_sub_;
-
-
+    rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr execution_done_pub_;
 };
 
 int main(int argc, char **argv)
@@ -220,4 +230,3 @@ int main(int argc, char **argv)
     rclcpp::shutdown();
     return 0;
 }
-

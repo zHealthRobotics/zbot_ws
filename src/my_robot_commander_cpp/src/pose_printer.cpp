@@ -23,7 +23,7 @@ private:
     {
       auto tf = tf_buffer_->lookupTransform(
         "torso_link",        // reference
-        "wrist_yaw_link",    // end effector
+        "RWY_link",    // end effector
         tf2::TimePointZero  // latest
       );
 

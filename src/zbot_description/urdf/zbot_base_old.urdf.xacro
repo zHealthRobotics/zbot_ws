@@ -2,20 +2,20 @@
 <robot
   name="zbot">
   <link
-    name="base_link">
+    name="chassis_link">
     <inertial>
       <origin
-        xyz="0.000969769171030282 -2.51743070833754E-14 0.112038367342421"
+        xyz="4.1242009807263E-13 -1.41053835278626E-13 0.0457150612516181"
         rpy="0 0 0" />
       <mass
-        value="16.3990394222604" />
+        value="2.91418586484034" />
       <inertia
-        ixx="0.380637346168345"
-        ixy="-0.148651077561082"
-        ixz="-0.000152996884277864"
-        iyy="0.389495977304953"
-        iyz="3.71624735443284E-16"
-        izz="0.616293577235193" />
+        ixx="0.0160414554493788"
+        ixy="-3.80532779283033E-08"
+        ixz="5.2791865716338E-15"
+        iyy="0.0223949877952289"
+        iyz="3.03477371110732E-16"
+        izz="0.0344217543051772" />
     </inertial>
     <visual>
       <origin
@@ -23,7 +23,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/base_link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/chassis_link.STL" />
       </geometry>
       <material
         name="">
@@ -33,20 +33,19 @@
     </visual>
     <collision>
       <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
+        xyz="0 0 0.12"
+        rpy="0 0 0" />    
       <geometry>
-        <mesh
-          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/base_link.STL" />
+        <box size="0.45 0.45 0.3"/>
       </geometry>
     </collision>
   </link>
   
   <link name="base_footprint"/>
 
-  <joint name="basefootprint_to_base" type="fixed">
+  <joint name="basefootprint_to_chassis" type="fixed">
     <parent link="base_footprint"/>
-    <child link="base_link"/>
+    <child link="chassis_link"/>
     <origin xyz="0 0 0.06" rpy="0 0 0"/>
   </joint>  
  
@@ -78,26 +77,26 @@
     </inertial>
   </link>
 
-  <joint name="base_to_top_box" type="fixed">
-    <parent link="base_link"/>
+  <joint name="chassis_to_top_box" type="fixed">
+    <parent link="chassis_link"/>
     <child link="top_box_link"/>
     <origin xyz="0 0 0.26" rpy="0 0 0"/>
-  </joint>   
+  </joint> 
   
   <link
-    name="Rigthwheel_Link">
+    name="Left_wheel_link">
     <inertial>
       <origin
-        xyz="-2.77555756156289E-17 -0.0172531056477295 3.46944695195361E-17"
+        xyz="1.38777878078145E-16 0.0172531056477295 7.63278329429795E-16"
         rpy="0 0 0" />
       <mass
         value="0.422964399925245" />
       <inertia
         ixx="0.000450352731222891"
-        ixy="2.93305874890802E-19"
-        ixz="7.95950128490977E-22"
-        iyy="0.000799166716964206"
-        iyz="-6.96192737487882E-19"
+        ixy="8.63588855368215E-21"
+        ixz="-2.55358655482607E-20"
+        iyy="0.000799166716964205"
+        iyz="-1.56617535979576E-20"
         izz="0.000450352731222891" />
     </inertial>
     <visual>
@@ -106,7 +105,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Rigthwheel_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Left_wheel_link.STL" />
       </geometry>
       <material
         name="">
@@ -120,94 +119,41 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Rigthwheel_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Left_wheel_link.STL" />
       </geometry>
     </collision>
   </link>
   <joint
-    name="Rigthwheel_joint"
+    name="Left_wheel_joint"
     type="continuous">
     <origin
-      xyz="0 0.195500000000004 0"
-      rpy="0 0 3.14" />
-    <parent
-      link="base_link" />
-    <child
-      link="Rigthwheel_Link" />
-    <axis
-      xyz="0 -1 0" />
-  </joint>
-  <link
-    name="Leftwheel_Link">
-    <inertial>
-      <origin
-        xyz="-2.77555756156289E-17 0.0172531056477295 6.93889390390723E-18"
-        rpy="0 0 0" />
-      <mass
-        value="0.422964399925245" />
-      <inertia
-        ixx="0.000450352731222891"
-        ixy="-1.63319545033364E-21"
-        ixz="-1.17067365193491E-20"
-        iyy="0.000799166716964206"
-        iyz="1.71286555130685E-20"
-        izz="0.000450352731222891" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Leftwheel_Link.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Leftwheel_Link.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="Leftwheel_joint"
-    type="continuous">
-    <origin
-      xyz="0 -0.1955 0"
+      xyz="0 -0.195500000000004 0"
       rpy="0 0 0" />
     <parent
-      link="base_link" />
+      link="chassis_link" />
     <child
-      link="Leftwheel_Link" />
+      link="Left_wheel_link" />
     <axis
       xyz="0 1 0" />
     <limit
       effort="24"
-      velocity="0.58875" />
+      velocity="9.42" />
   </joint>
   <link
-    name="Holder1_Link">
+    name="Right_wheel_link">
     <inertial>
       <origin
-        xyz="0.0149538369402379 -2.77555756156289E-17 -0.00548508947688804"
+        xyz="-1.66533453693773E-16 -0.0172531056477289 -4.16333634234434E-17"
         rpy="0 0 0" />
       <mass
-        value="0.0807915502778827" />
+        value="0.422964399925245" />
       <inertia
-        ixx="2.45834344225308E-05"
-        ixy="1.69021364418985E-20"
-        ixz="3.88786622376317E-06"
-        iyy="2.66654394263947E-05"
-        iyz="-3.31005941315939E-21"
-        izz="4.19580790977868E-05" />
+        ixx="0.000450352731222891"
+        ixy="2.9978516071709E-19"
+        ixz="1.86430677315541E-20"
+        iyy="0.000799166716964206"
+        iyz="-6.95386833210546E-19"
+        izz="0.000450352731222891" />
     </inertial>
     <visual>
       <origin
@@ -215,12 +161,12 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Holder1_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Right_wheel_link.STL" />
       </geometry>
       <material
         name="">
         <color
-          rgba="0.647058823529412 0.619607843137255 0.588235294117647 1" />
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
     <collision>
@@ -229,41 +175,41 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Holder1_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Right_wheel_link.STL" />
       </geometry>
     </collision>
   </link>
   <joint
-    name="Holder1_joint"
+    name="Right_wheel_joint"
     type="continuous">
     <origin
-      xyz="0.13 0.1295 -0.0075"
+      xyz="0 0.195500000000003 0"
       rpy="0 0 0" />
     <parent
-      link="base_link" />
+      link="chassis_link" />
     <child
-      link="Holder1_Link" />
+      link="Right_wheel_link" />
     <axis
-      xyz="0 0 -1" />
+      xyz="0 -1 0" />
     <limit
-      effort="0"
-      velocity="0" />
+      effort="24"
+      velocity="9.42" />
   </joint>
   <link
-    name="Wheel1_Link">
+    name="holder1_Link">
     <inertial>
       <origin
-        xyz="4.64905891561784E-16 -1.38777878078145E-17 8.23126289350995E-16"
+        xyz="0.0149538369402379 0 -0.00548508947688803"
         rpy="0 0 0" />
       <mass
-        value="0.07386669726753" />
+        value="0.0110673356545045" />
       <inertia
-        ixx="1.38792446386636E-05"
-        ixy="-6.31654242534127E-22"
-        ixz="-1.59131939955441E-22"
-        iyy="2.33141763250642E-05"
-        iyz="2.23754762315135E-22"
-        izz="1.38792446386636E-05" />
+        ixx="3.36759375651107E-06"
+        ixy="1.91654214425208E-21"
+        ixz="5.32584414214133E-07"
+        iyy="3.65279992142393E-06"
+        iyz="-2.64785319973256E-22"
+        izz="5.74768206818997E-06" />
     </inertial>
     <visual>
       <origin
@@ -271,12 +217,12 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Wheel1_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/holder1_Link.STL" />
       </geometry>
       <material
         name="">
         <color
-          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+          rgba="0 0 0 1" />
       </material>
     </visual>
     <collision>
@@ -285,208 +231,264 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Wheel1_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/holder1_Link.STL" />
       </geometry>
     </collision>
   </link>
   <joint
-    name="Wheel1_joint"
+    name="holder1_joint"
     type="continuous">
     <origin
-      xyz="0.035 0 -0.03"
+      xyz="0.13 0.1295 -0.00949999999999611"
       rpy="0 0 0" />
     <parent
-      link="Holder1_Link" />
+      link="chassis_link" />
     <child
-      link="Wheel1_Link" />
+      link="holder1_Link" />
     <axis
-      xyz="0 1 0" />
+      xyz="0 0 1" />
     <limit
       effort="0"
       velocity="0" />
   </joint>
   <link
-    name="Holder2_Link">
-    <inertial>
-      <origin
-        xyz="0.0149538369402379 -1.38777878078145E-17 -0.00548508947688804"
-        rpy="0 0 0" />
-      <mass
-        value="0.0807915502778826" />
-      <inertia
-        ixx="2.45834344225309E-05"
-        ixy="1.74611051724873E-20"
-        ixz="3.88786622376317E-06"
-        iyy="2.66654394263947E-05"
-        iyz="-2.67449956498734E-21"
-        izz="4.19580790977868E-05" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Holder2_Link.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.647058823529412 0.619607843137255 0.588235294117647 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Holder2_Link.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="Holder2_joint"
-    type="continuous">
-    <origin
-      xyz="-0.13 0.1295 -0.0075"
-      rpy="0 0 0" />
-    <parent
-      link="base_link" />
-    <child
-      link="Holder2_Link" />
-    <axis
-      xyz="0 0 -1" />
-    <limit
-      effort="0"
-      velocity="0" />
-  </joint>
-  <link
-    name="Wheel2_Link">
-    <inertial>
-      <origin
-        xyz="0 -1.38777878078145E-17 3.46944695195361E-18"
-        rpy="0 0 0" />
-      <mass
-        value="0.07386669726753" />
-      <inertia
-        ixx="1.38792446386636E-05"
-        ixy="-7.66357158702502E-22"
-        ixz="-1.57821214113715E-22"
-        iyy="2.33141763250642E-05"
-        iyz="2.33184621298239E-22"
-        izz="1.38792446386636E-05" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Wheel2_Link.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Wheel2_Link.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="Wheel2_joint"
-    type="continuous">
-    <origin
-      xyz="0.035 0 -0.03"
-      rpy="0 0 0" />
-    <parent
-      link="Holder2_Link" />
-    <child
-      link="Wheel2_Link" />
-    <axis
-      xyz="0 1 0" />
-    <limit
-      effort="0"
-      velocity="0" />
-  </joint>
-  <link
-    name="Holder3_Link">
-    <inertial>
-      <origin
-        xyz="0.0149538369402379 5.55111512312578E-17 -0.00548508947688803"
-        rpy="0 0 0" />
-      <mass
-        value="0.0807915502778826" />
-      <inertia
-        ixx="2.45834344225309E-05"
-        ixy="-6.06702902396125E-20"
-        ixz="3.88786622376317E-06"
-        iyy="2.66654394263947E-05"
-        iyz="7.11922492648378E-20"
-        izz="4.19580790977868E-05" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Holder3_Link.STL" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.647058823529412 0.619607843137255 0.588235294117647 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Holder3_Link.STL" />
-      </geometry>
-    </collision>
-  </link>
-  <joint
-    name="Holder3_joint"
-    type="continuous">
-    <origin
-      xyz="0.13 -0.1295 -0.0075"
-      rpy="0 0 0" />
-    <parent
-      link="base_link" />
-    <child
-      link="Holder3_Link" />
-    <axis
-      xyz="0 0 -1" />
-    <limit
-      effort="0"
-      velocity="0" />
-  </joint>
-  <link
-    name="Wheel3_Link">
+    name="wheel1_Link">
     <inertial>
       <origin
         xyz="5.55111512312578E-17 0 3.25260651745651E-18"
         rpy="0 0 0" />
       <mass
+        value="0.07386669726753" />
+      <inertia
+        ixx="1.38792446386636E-05"
+        ixy="-7.67863316734526E-22"
+        ixz="-1.59131939955441E-22"
+        iyy="2.33141763250642E-05"
+        iyz="2.27558867913594E-22"
+        izz="1.38792446386636E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/wheel1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.909803921568627 0.443137254901961 0.0313725490196078 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/wheel1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel1_joint"
+    type="continuous">
+    <origin
+      xyz="0.0350000000000004 0 -0.03"
+      rpy="0 0 0" />
+    <parent
+      link="holder1_Link" />
+    <child
+      link="wheel1_Link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="holder2_Link">
+    <inertial>
+      <origin
+        xyz="0.0149538369402378 -1.38777878078145E-17 -0.00548508947688803"
+        rpy="0 0 0" />
+      <mass
+        value="0.0110673356545045" />
+      <inertia
+        ixx="3.36759375651108E-06"
+        ixy="2.21298389542766E-21"
+        ixz="5.32584414214133E-07"
+        iyy="3.65279992142394E-06"
+        iyz="-2.93180920139946E-22"
+        izz="5.74768206818998E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/holder2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/holder2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="holder2_joint"
+    type="continuous">
+    <origin
+      xyz="-0.130000000000001 0.1295 -0.00949999999999698"
+      rpy="0 0 0" />
+    <parent
+      link="chassis_link" />
+    <child
+      link="holder2_Link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="wheel2_Link">
+    <inertial>
+      <origin
+        xyz="5.55111512312578E-17 -1.38777878078145E-17 3.25260651745651E-18"
+        rpy="0 0 0" />
+      <mass
+        value="0.07386669726753" />
+      <inertia
+        ixx="1.38792446386636E-05"
+        ixy="-7.67404920811736E-22"
+        ixz="-1.57821214113714E-22"
+        iyy="2.33141763250642E-05"
+        iyz="2.36988726896699E-22"
+        izz="1.38792446386636E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/wheel2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.909803921568627 0.443137254901961 0.0313725490196078 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/wheel2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel2_joint"
+    type="continuous">
+    <origin
+      xyz="0.0350000000000004 0 -0.03"
+      rpy="0 0 0" />
+    <parent
+      link="holder2_Link" />
+    <child
+      link="wheel2_Link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="holder3_Link">
+    <inertial>
+      <origin
+        xyz="0.0149538369402379 1.11022302462516E-16 -0.00548508947688804"
+        rpy="0 0 0" />
+      <mass
+        value="0.0110673356545045" />
+      <inertia
+        ixx="3.36759375651107E-06"
+        ixy="-8.59900995484746E-21"
+        ixz="5.32584414214132E-07"
+        iyy="3.65279992142393E-06"
+        iyz="9.43655140551764E-21"
+        izz="5.74768206818997E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/holder3_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/holder3_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="holder3_joint"
+    type="continuous">
+    <origin
+      xyz="0.13 -0.1295 -0.00949999999999693"
+      rpy="0 0 0" />
+    <parent
+      link="chassis_link" />
+    <child
+      link="holder3_Link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="wheel3_Link">
+    <inertial>
+      <origin
+        xyz="-2.91433543964104E-16 0 -8.16295815664336E-16"
+        rpy="0 0 0" />
+      <mass
         value="0.0738666972675301" />
       <inertia
         ixx="1.38792446386636E-05"
-        ixy="-7.75197651499163E-22"
+        ixy="-7.76245413608397E-22"
         ixz="-1.17777958037584E-22"
         iyy="2.33141763250642E-05"
-        iyz="2.24802524424369E-22"
+        iyz="2.28606630022829E-22"
         izz="1.38792446386636E-05" />
     </inertial>
     <visual>
@@ -495,12 +497,12 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Wheel3_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/wheel3_Link.STL" />
       </geometry>
       <material
         name="">
         <color
-          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+          rgba="0.909803921568627 0.443137254901961 0.0313725490196078 1" />
       </material>
     </visual>
     <collision>
@@ -509,41 +511,41 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Wheel3_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/wheel3_Link.STL" />
       </geometry>
     </collision>
   </link>
   <joint
-    name="Wheel3_joint"
+    name="wheel3_joint"
     type="continuous">
     <origin
-      xyz="0.035 0 -0.03"
+      xyz="0.0350000000000007 0 -0.0299999999999991"
       rpy="0 0 0" />
     <parent
-      link="Holder3_Link" />
+      link="holder3_Link" />
     <child
-      link="Wheel3_Link" />
+      link="wheel3_Link" />
     <axis
-      xyz="0 1 0" />
+      xyz="0 -1 0" />
     <limit
       effort="0"
       velocity="0" />
   </joint>
   <link
-    name="Holder4_Link">
+    name="holder4_Link">
     <inertial>
       <origin
-        xyz="0.0149538369402378 5.55111512312578E-17 -0.00548508947688803"
+        xyz="0.0149538369402379 5.55111512312578E-17 -0.00548508947688803"
         rpy="0 0 0" />
       <mass
-        value="0.0807915502778826" />
+        value="0.0110673356545044" />
       <inertia
-        ixx="2.45834344225309E-05"
-        ixy="-6.43861401513826E-20"
-        ixz="3.88786622376317E-06"
-        iyy="2.66654394263947E-05"
-        iyz="6.03905506479546E-20"
-        izz="4.19580790977869E-05" />
+        ixx="3.36759375651107E-06"
+        ixy="-5.99260130111312E-21"
+        ixz="5.32584414214132E-07"
+        iyy="3.65279992142393E-06"
+        iyz="7.6641911408224E-21"
+        izz="5.74768206818997E-06" />
     </inertial>
     <visual>
       <origin
@@ -551,12 +553,12 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Holder4_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/holder4_Link.STL" />
       </geometry>
       <material
         name="">
         <color
-          rgba="0.647058823529412 0.619607843137255 0.588235294117647 1" />
+          rgba="0 0 0 1" />
       </material>
     </visual>
     <collision>
@@ -565,40 +567,40 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Holder4_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/holder4_Link.STL" />
       </geometry>
     </collision>
   </link>
   <joint
-    name="Holder4_joint"
+    name="holder4_joint"
     type="continuous">
     <origin
-      xyz="-0.13 -0.1295 -0.0075"
+      xyz="-0.13 -0.1295 -0.0095"
       rpy="0 0 0" />
     <parent
-      link="base_link" />
+      link="chassis_link" />
     <child
-      link="Holder4_Link" />
+      link="holder4_Link" />
     <axis
-      xyz="0 0 -1" />
+      xyz="0 0 1" />
     <limit
       effort="0"
       velocity="0" />
   </joint>
   <link
-    name="Wheel4_Link">
+    name="wheel4_Link">
     <inertial>
       <origin
-        xyz="1.66533453693773E-16 0 5.76795555762288E-17"
+        xyz="3.33066907387547E-16 5.55111512312578E-17 1.63714528045311E-17"
         rpy="0 0 0" />
       <mass
         value="0.0738666972675301" />
       <inertia
         ixx="1.38792446386636E-05"
-        ixy="-7.74739255576373E-22"
-        ixz="-1.16467232195857E-22"
+        ixy="-7.76834779794841E-22"
+        ixz="-1.16467232195856E-22"
         iyy="2.33141763250642E-05"
-        iyz="2.3318462129824E-22"
+        iyz="2.36988726896699E-22"
         izz="1.38792446386636E-05" />
     </inertial>
     <visual>
@@ -607,12 +609,12 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Wheel4_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/wheel4_Link.STL" />
       </geometry>
       <material
         name="">
         <color
-          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+          rgba="0.909803921568627 0.443137254901961 0.0313725490196078 1" />
       </material>
     </visual>
     <collision>
@@ -621,46 +623,24 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/Wheel4_Link.STL" />
+          filename="file://$(env HOME)/zbot_ws/install/zbot_description/share/zbot_description/meshes/wheel4_Link.STL" />
       </geometry>
     </collision>
   </link>
   <joint
-    name="Wheel4_joint"
+    name="wheel4_joint"
     type="continuous">
     <origin
-      xyz="0.035 0 -0.03"
+      xyz="0.0350000000000001 0 -0.03"
       rpy="0 0 0" />
     <parent
-      link="Holder4_Link" />
+      link="holder4_Link" />
     <child
-      link="Wheel4_Link" />
+      link="wheel4_Link" />
     <axis
-      xyz="0 1 0" />
+      xyz="0 -1 0" />
     <limit
       effort="0"
       velocity="0" />
   </joint>
-  
-  <gazebo>
-    <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
-      <update_rate>50</update_rate>
-      <left_joint>Rigthwheel_joint</left_joint>
-      <right_joint>Leftwheel_joint</right_joint>
-      <wheel_separation>0.36</wheel_separation>
-      <wheel_diameter>0.125</wheel_diameter> 
-      <max_wheel_torque>24</max_wheel_torque>
-      <max_wheel_acceleration>1.0</max_wheel_acceleration>
-      
-      <command_topic>cmd_vel</command_topic>
-      <odometry_topic>odom</odometry_topic>
-      <odometry_frame>odom</odometry_frame>
-      <robot_base_frame>base_link</robot_base_frame>
-      <publish_odom>true</publish_odom>
-      <publish_odom_tf>true</publish_odom_tf>
-      <publish_wheel_tf>false</publish_wheel_tf>
-    </plugin>
-
-  </gazebo>    
-  
 </robot>
